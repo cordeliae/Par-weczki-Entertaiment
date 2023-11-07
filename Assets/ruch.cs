@@ -2,13 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ruch : MonoBehaviour
 {
-
-    public void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -34,6 +29,13 @@ public class NewBehaviourScript : MonoBehaviour
 
        
     }
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("soul"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
+
 }
 
