@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ruch : MonoBehaviour
@@ -13,6 +14,10 @@ public class ruch : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left *0.1f);
@@ -36,11 +41,11 @@ public class ruch : MonoBehaviour
 
        
     }
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("soul"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
             souls++;
         }
     }
