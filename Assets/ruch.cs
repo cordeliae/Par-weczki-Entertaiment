@@ -3,40 +3,43 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class ruch : MonoBehaviour
 {
     private int souls;
     public int soulsCount;
     public TextMeshProUGUI soulText;
+    public int Playerspeed;
 
 
     void Update()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(Vector3.left *0.1f);
+            transform.Translate(Vector3.left *Playerspeed);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            transform.Translate(Vector3.right * 0.1f);
+            transform.Translate(Vector3.right *Playerspeed);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.up * 0.1f);
+            transform.Translate(Vector3.up * Playerspeed);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.down * 0.1f);
+            transform.Translate(Vector3.down * Playerspeed);
         }
-        soulText.text = soulsCount.ToString();
+        Debug.Log("DUSZE: " + souls);
+        soulText.text = souls.ToString();
 
-       
+
     }
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("soul"))
         {
